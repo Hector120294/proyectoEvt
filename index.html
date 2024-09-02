@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de datos</title>
+</head>
+<body>
+    <form action="/guardar" method="POST">
+        Fecha: <input type="date" id="fecha" name="fecha" required><br>
+        Hora: <input type="time" id="hora" name="hora" required><br>
+        Nombre: <input type="text" name="campo1" required><br>
+        Hotel: <input type="text" name="campo2" required><br>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <script>
+        // Función para establecer la fecha y hora actuales en los campos
+        const setDateAndTime = () => {
+            const now = new Date();
+            
+            // Formato para la fecha (YYYY-MM-DD)
+            const date = now.toISOString().split('T')[0];
+            document.getElementById('fecha').value = date;
+            
+            // Formato para la hora (HH:MM)
+            const time = now.toTimeString().split(' ')[0].substring(0, 5);
+            document.getElementById('hora').value = time;
+        };
+
+        // Ejecutar la función al cargar la página
+        window.onload = setDateAndTime;
+    </script>
+</body>
+</html>
